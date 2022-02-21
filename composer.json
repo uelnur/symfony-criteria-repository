@@ -1,5 +1,5 @@
 {
-    "name": "elnur/symfony-criteria-repository",
+    "name": "uelnur/symfony-criteria-repository",
     "description": "Symfony Criteria Repository",
     "type": "library",
     "require": {
