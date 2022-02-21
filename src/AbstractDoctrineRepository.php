@@ -34,7 +34,7 @@ abstract class AbstractDoctrineRepository implements RepositoryInterface {
             $alias = $this->getEntityAlias();
         }
 
-        return $field . '.' . $alias;
+        return $alias . '.' . $field;
     }
 
     protected function modifyQueryBuilder(AbstractCriteria $criteria, QueryBuilder $qb): void {
