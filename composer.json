@@ -1,0 +1,29 @@
+{
+    "name": "elnur/symfony-criteria-repository",
+    "description": "Symfony Criteria Repository",
+    "type": "library",
+    "require": {
+        "php": "^8",
+        "doctrine/orm": "^2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Uelnur\\SymfonyCriteriaRepository\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Uelnur\\SymfonyCriteriaRepository\\Tests\\": "tests/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yelnur Urazymbetov",
+            "email": "311293e@gmail.com"
+        }
+    ]
+}
