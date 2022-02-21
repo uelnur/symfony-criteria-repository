@@ -13,7 +13,7 @@ trait DoctrineQueryBuilderHelperTrait {
         QueryBuilder $qb,
         string|int|null $valueType = null,
     ): void {
-        $fieldName = $this->getFieldName($field);
+        $fieldName = self::getFieldName($field);
 
         if ( is_array($value) && count($value) > 1 ) {
             $qb
@@ -40,7 +40,7 @@ trait DoctrineQueryBuilderHelperTrait {
         QueryBuilder $qb,
         string|int|null $valueType = null,
     ): void {
-        $fieldName = $this->getFieldName($field);
+        $fieldName = self::getFieldName($field);
 
         if ( is_array($value) && count($value) > 1 ) {
             $qb
@@ -94,7 +94,7 @@ trait DoctrineQueryBuilderHelperTrait {
             $likes = [];
 
             foreach ($field as $f) {
-                $fieldName = $this->getFieldName($f);
+                $fieldName = self::getFieldName($f);
 
                 $likes[] = $qb->expr()->like(
                     $qb->expr()->lower($f),
@@ -108,7 +108,7 @@ trait DoctrineQueryBuilderHelperTrait {
                 $qb->expr()->orX(...$likes)
             );
         } else {
-            $fieldName = $this->getFieldName($field);
+            $fieldName = self::getFieldName($field);
 
             $qb
                 ->andWhere(
@@ -130,8 +130,8 @@ trait DoctrineQueryBuilderHelperTrait {
         string|int|null $valueType = null,
     ): void {
         if ( $gte !== null && $lte !== null ) {
-            $fieldNameGte = $this->getFieldName($field.'_gte');
-            $fieldNameLte = $this->getFieldName($field.'_lte');
+            $fieldNameGte = self::getFieldName($field.'_gte');
+            $fieldNameLte = self::getFieldName($field.'_lte');
 
             $qb
                 ->andWhere(
@@ -149,7 +149,7 @@ trait DoctrineQueryBuilderHelperTrait {
         }
 
         if ( $gte !== null ) {
-            $fieldName = $this->getFieldName($field);
+            $fieldName = self::getFieldName($field);
 
             $qb
                 ->andWhere(
@@ -163,7 +163,7 @@ trait DoctrineQueryBuilderHelperTrait {
         }
 
         if ( $lte !== null ) {
-            $fieldName = $this->getFieldName($field);
+            $fieldName = self::getFieldName($field);
 
             $qb
                 ->andWhere(
@@ -184,7 +184,7 @@ trait DoctrineQueryBuilderHelperTrait {
         QueryBuilder    $qb,
         string|int|null $valueType = null,
     ): void {
-        $fieldName = $this->getFieldName($field);
+        $fieldName = self::getFieldName($field);
 
         if ( $gte !== null ) {
             $qb
@@ -217,7 +217,7 @@ trait DoctrineQueryBuilderHelperTrait {
         }
     }
 
-    private function getFieldName(string $field): string {
+    private static function getFieldName(string $field): string {
         $field = str_replace('.', '_', $field);
         $number = (self::$fieldNumber[$field] ?? 0) + 1;
 
