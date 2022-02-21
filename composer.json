@@ -1,6 +1,7 @@
 {
     "name": "uelnur/symfony-criteria-repository",
     "description": "Symfony Criteria Repository",
+    "version": "0.1.1",
     "type": "library",
     "require": {
         "php": "^8",
