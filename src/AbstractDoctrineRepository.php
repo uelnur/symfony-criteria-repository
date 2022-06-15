@@ -19,7 +19,7 @@ abstract class AbstractDoctrineRepository implements RepositoryInterface {
 
     abstract public function getCriteriaClass(): string;
 
-    final protected function standardQueryBuilderModifier(AbstractCriteria $criteria, QueryBuilder $qb): void {
+    final protected function buildStandardQuery(AbstractCriteria $criteria, QueryBuilder $qb): void {
         $idField = $this->getFieldName($this->getIdField());
 
         $this->whereFieldEqual($idField, $criteria->id, $qb);
@@ -37,8 +37,8 @@ abstract class AbstractDoctrineRepository implements RepositoryInterface {
         return $alias . '.' . $field;
     }
 
-    protected function modifyQueryBuilder(AbstractCriteria $criteria, QueryBuilder $qb): void {
-        $this->standardQueryBuilderModifier($criteria, $qb);
+    protected function buildQuery(AbstractCriteria $criteria, QueryBuilder $qb): void {
+        $this->buildStandardQuery($criteria, $qb);
     }
 
     protected function getDefaultOrder(): array {
@@ -263,7 +263,7 @@ abstract class AbstractDoctrineRepository implements RepositoryInterface {
            ->select($alias)
         ;
 
-        $this->modifyQueryBuilder($criteria, $qb);
+        $this->buildQuery($criteria, $qb);
         $this->processOrderBy($criteria, $qb);
         $this->processPagination($criteria, $qb);
 
